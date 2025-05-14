@@ -1,0 +1,46 @@
+class EmojiConverter:
+    def __init__(self):
+        self.emoji_dict = {
+            "happy": "😊",
+            "sad": "😢",
+            "love": "❤️",
+            "cats": "🐱",
+            "dogs": "🐶",
+            "sun": "☀️",
+            "star": "⭐",
+            "fire": "🔥",
+            "ok": "👍",
+            "coffee": "☕",
+            "pizza": "🍕",
+            "party": "🎉",
+
+        }
+
+    def text_to_emoji(self, text):
+        words = text.split()
+        emoji_text = []
+        for word in words:
+            emoji_text.append(self.emoji_dict.get(word.lower(), word))
+        return ' '.join(emoji_text)
+
+
+class EmojiApp:
+    def __init__(self):
+        self.converter = EmojiConverter()
+
+    def run(self):
+        print("Welcome to the Text to Emoji Converter!")
+        print("Type 'exit' to quit the program.")
+
+        while True:
+            user_input = input("Enter your text: ")
+            if user_input.lower() == 'exit':
+                print("Goodbye!")
+                break
+            converted_text = self.converter.text_to_emoji(user_input)
+            print("Converted Text:", converted_text)
+
+
+if __name__ == "__main__":
+    app = EmojiApp()
+    app.run()
